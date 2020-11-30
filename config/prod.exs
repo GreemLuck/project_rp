@@ -11,6 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :project_rp, ProjectRpWeb.Endpoint,
   load_from_system_env: true,
+  http: [port: System.get_env("PORT")],
   url: [scheme: "https", host: "elixir-rp-app.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
