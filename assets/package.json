@@ -26,6 +26,6 @@
     "webpack-cli": "^3.3.2"
   },
   "engines": {
-    "node": "10.19.0"
+    "node": "10.x"
   }
 }
