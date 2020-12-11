@@ -1,4 +1,6 @@
 <!-- The list of messages will appear here: -->
+
+<!--
 <ul id='msg-list' class='row' style='list-style: none; height:200px; padding: 10px; flex-direction: column; border: 1px solid #777; overflow: scroll;'></ul>
 
 <div class="row">
@@ -9,3 +11,17 @@
     <input type="text" id="msg" class="form-control" placeholder="Your Message">
   </div>
 </div>
+-->
+
+  <%= if signed_in?(@conn) do %>
+    <div id="data" name= "<%= @conn.assigns[:current_user].username %>"></div>
+    <ul id='msg-list' class='row' style='list-style: none; height:200px; padding: 10px; flex-direction: column; border: 1px solid #777; overflow: scroll;'></ul>
+    <div class="row">
+      <div class="column column-80">
+        <input type="text" id="msg" class="form-control" placeholder="Your Message">
+      </div>
+    </div>
+
+  <% else %>
+    <h1>Welcome to our game, please sign in to access the chat<h1>
+  <% end %>

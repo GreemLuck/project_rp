@@ -7,6 +7,7 @@ defmodule ProjectRpWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ProjectRpWeb.Plugs.SetCurrentUser
   end
 
   pipeline :api do
@@ -17,6 +18,12 @@ defmodule ProjectRpWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/registrations", UserController, only: [:create, :new]
+    get "/chat", ChatPageController, :index
+
+    get "/sign_in", SessionController, :new
+    post "/sign_in", SessionController, :create
+    delete "/sign_out", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

@@ -14,9 +14,10 @@ defmodule ProjectRp.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: ProjectRp.PubSub},
       # Start the Endpoint (http/https)
-      ProjectRpWeb.Endpoint
+      ProjectRpWeb.Endpoint,
       # Start a worker by calling: ProjectRp.Worker.start_link(arg)
       # {ProjectRp.Worker, arg}
+      {ProjectRp.MessageHandler, :ok}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -2,7 +2,8 @@ defmodule ProjectRpWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:lobby", ProjectRpWeb.RoomChannel
+  channel "room:*", ProjectRpWeb.RoomChannel
+  channel "user:*", ProjectRpWeb.UserChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
