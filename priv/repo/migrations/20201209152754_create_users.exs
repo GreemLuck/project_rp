@@ -4,7 +4,7 @@ defmodule ProjectRp.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :username, :string
-      add :password, :string
+      add :encrypted_password, :string
 
       timestamps()
     end

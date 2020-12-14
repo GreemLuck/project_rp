@@ -9,7 +9,9 @@ defmodule ProjectRpWeb.SessionController do
 
   def create(conn, %{"session" => auth_params}) do
     user = Accounts.get_by_username(auth_params["username"])
-    case Comeonin.Bcrypt.check_pass(user, auth_params["password"]) do
+    IO.inspect user
+    IO.inspect auth_params
+    case Comeonin.Bcrypt.check_pass(user, auth_params["encrypted_password"]) do
       {:ok, user} ->
         conn
         |> put_session(:current_user_id, user.id)

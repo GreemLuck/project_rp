@@ -17,7 +17,8 @@ defmodule ProjectRp.Application do
       ProjectRpWeb.Endpoint,
       # Start a worker by calling: ProjectRp.Worker.start_link(arg)
       # {ProjectRp.Worker, arg}
-      {ProjectRp.MessageHandler, :ok}
+      {ProjectRp.MessageHandler, :ok},
+      ProjectRpWeb.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -10,9 +10,9 @@
   <%= error_tag f, :username %>
 
   <div class="form-group">
-  <%= label f, :password, class: "control-label" %>
-  <%= password_input f, :password, class: "form-control" %>
-  <%= error_tag f, :password %>
+  <%= label f, :encrypted_password, class: "control-label" %>
+  <%= password_input f, :encrypted_password, class: "form-control" %>
+  <%= error_tag f, :encrypted_password %>
   </div>
 
   <div>

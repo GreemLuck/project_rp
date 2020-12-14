@@ -1,12 +1,10 @@
-defmodule ProjectRpWeb.UserChannel do
+defmodule ProjectRpWeb.GlobalChannel do
   use ProjectRpWeb, :channel
 
-  alias ProjectRpWeb.Presence
-
   @impl true
-  def join("user:"<>username, payload, socket) do
+  def join("global:lobby", payload, socket) do
     if authorized?(payload) do
-      {:ok, %{channel: "user:"<>username}, socket}
+      {:ok, %{channel: "global:lobby"}, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
@@ -20,17 +18,10 @@ defmodule ProjectRpWeb.UserChannel do
   end
 
   # It is also common to receive messages from the client and
-  # broadcast to everyone in the current topic (user:lobby).
+  # broadcast to everyone in the current topic (global:lobby).
   @impl true
   def handle_in("shout", payload, socket) do
     broadcast socket, "shout", payload
-    {:noreply, socket}
-  end
-
-  @impl true
-  def handle_in("whisper", payload, socket) do
-    push socket, "whisper", payload
-    ProjectRpWeb.Endpoint.broadcast "user:"<>Map.fetch!(payload, "dest"), "shout", payload
     {:noreply, socket}
   end
 

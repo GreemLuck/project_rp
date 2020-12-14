@@ -4,6 +4,7 @@ defmodule ProjectRpWeb.UserSocket do
   ## Channels
   channel "room:*", ProjectRpWeb.RoomChannel
   channel "user:*", ProjectRpWeb.UserChannel
+  channel "global:*", ProjectRpWeb.GlobalChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

@@ -5,7 +5,7 @@ defmodule ProjectRp.Accounts.User do
   alias Comeonin.Bcrypt
 
   schema "users" do
-    field :password, :string
+    field :encrypted_password, :string
     field :username, :string
 
     timestamps()
@@ -14,9 +14,9 @@ defmodule ProjectRp.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :password])
-    |> validate_required([:username, :password])
+    |> cast(attrs, [:username, :encrypted_password])
+    |> validate_required([:username, :encrypted_password])
     |> unique_constraint(:username)
-    |> update_change(:password, &Bcrypt.hashpwsalt/1)
+    |> update_change(:encrypted_password, &Bcrypt.hashpwsalt/1)
   end
 end
